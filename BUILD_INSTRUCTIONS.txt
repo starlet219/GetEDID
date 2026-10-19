@@ -1,0 +1,14 @@
+GetEDID Windows EXE build
+=========================
+This is the original project plus a GitHub Actions build workflow. NO compiled EXE is included.
+
+To generate the EXE without installing Visual Studio locally:
+1. Create a new GitHub repository, upload all files from GetEDID-main (including .github/workflows/build-windows.yml).
+2. Open Actions > Build Windows EXE > Run workflow.
+3. After the run succeeds, download the GetEDID-Windows-x64 artifact.
+
+Alternative: On a Windows machine with Visual Studio 2022 C++ desktop workload and Windows 11 SDK 22621 installed:
+  nuget restore GetEDID.sln -PackagesDirectory packages
+  msbuild GetEDID.sln /m /p:Configuration=Release /p:Platform=x64
+
+Note: GitHub Windows runner SDK availability may change; the project requires Windows SDK 10.0.22621.0 and Microsoft.Windows.CppWinRT NuGet 2.0.220531.1. This workflow has not been executed/verified in this environment.
